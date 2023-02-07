@@ -1,6 +1,6 @@
 import {Resolver, Query, Arg, ID} from 'type-graphql';
 import {User} from '../database/entity/User';
-import {Equal, ObjectID} from 'typeorm';
+import {ObjectID} from 'typeorm';
 
 @Resolver()
 /**
@@ -15,17 +15,33 @@ export class UserResolver {
      * @returns {Promise<User[]>} - Utenti
      */
     async users(): Promise<User[]> {
-        return await User.find();
+        // capire perchè non funziona con relationa
+        return await User.find({
+            relations: {
+                articles: true,
+            },
+        });
     }
 
     @Query(() => User)
     /**
      * Ritorna un utente
-     * @param {ObjectID} _id - ID dell'utente
+     * @param {string} username - Username dell'utente
      * @returns {Promise<User>} - Utente
      */
-    async user(@Arg('_id', () => ID) _id: ObjectID): Promise<User> {
-        // capire perchè non funziona non trova nulla
-        return await User.findOne({where: {_id: Equal(_id)}});
+    async user(@Arg('username', () => String) username: string): Promise<User> {
+        return await User.findOneBy({username});
+    }
+
+
+    @Query(() => User)
+    /**
+     * Ritorna un utente
+     * @param {string} username - Username dell'utente
+     * @returns {Promise<User>} - Utente
+     */
+    async userId(@Arg('id', () => ID) id: ObjectID): Promise<User> {
+        // capire perchè non funziona con ID
+        return await User.findOneBy({id});
     }
 }

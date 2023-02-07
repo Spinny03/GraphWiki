@@ -1,5 +1,7 @@
 import {Field, ID, ObjectType} from 'type-graphql';
-import {Entity, BaseEntity, Column, ObjectIdColumn, ObjectID} from 'typeorm';
+import {Entity, BaseEntity, Column, ObjectIdColumn,
+    ObjectID, OneToMany} from 'typeorm';
+import {Article} from './Article';
 
 
 @ObjectType()
@@ -16,7 +18,7 @@ import {Entity, BaseEntity, Column, ObjectIdColumn, ObjectID} from 'typeorm';
 export class User extends BaseEntity {
     @Field(() => ID)
     @ObjectIdColumn()
-        _id!: ObjectID;
+        id!: ObjectID;
 
     @Field(() => String)
     @Column()
@@ -29,4 +31,8 @@ export class User extends BaseEntity {
     @Field(() => String)
     @Column()
         surname: string;
+
+    @Field(() => [Article])
+    @OneToMany(() => Article, (article) => article.user)
+        articles: Article[];
 }
