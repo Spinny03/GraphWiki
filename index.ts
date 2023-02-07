@@ -1,6 +1,6 @@
 import {buildSchema} from 'type-graphql';
-import {AppDataSource} from './database/data-source';
-import {UserResolver} from './resolvers/UserResolever';
+import {AppDataSource} from './src/database/data-source';
+import {UserResolver} from './src/resolvers/UserResolever';
 import {ApolloServer} from 'apollo-server';
 
 AppDataSource.initialize().then(async () => {
