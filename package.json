@@ -1,0 +1,32 @@
+{
+   "name": "learn-typegraphql",
+   "version": "1.0.0",
+   "description": "",
+   "main": "index.ts",
+   "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1",
+      "start": "ts-node src/index.ts",
+      "typeorm": "typeorm-ts-node-commonjs",
+      "lint": "eslint . --fix --ext .ts"
+   },
+   "keywords": [],
+   "author": "",
+   "license": "ISC",
+   "dependencies": {
+      "apollo-server": "^3.11.1",
+      "eslint-plugin-jsdoc": "^39.8.0",
+      "reflect-metadata": "^0.1.13",
+      "type-graphql": "^1.1.1",
+      "typeorm": "0.3.11"
+   },
+   "devDependencies": {
+      "@types/node": "^16.11.10",
+      "@typescript-eslint/eslint-plugin": "^5.51.0",
+      "@typescript-eslint/parser": "^5.51.0",
+      "eslint": "^8.33.0",
+      "eslint-config-google": "^0.14.0",
+      "nodemon": "^2.0.20",
+      "ts-node": "10.7.0",
+      "typescript": "4.5.2"
+   }
+}

@@ -1,0 +1,10 @@
+{
+    "parser": "@typescript-eslint/parser",
+    "plugins": ["@typescript-eslint","jsdoc"],
+    "extends": ["google"],
+    "rules": {
+        "indent": ["error", 4],
+        "new-cap": "off",
+        "require-jsdoc": "off"
+    }
+}
